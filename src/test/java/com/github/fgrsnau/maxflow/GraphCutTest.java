@@ -8,7 +8,7 @@ public class GraphCutTest {
 	@Test
 	public void testUnary1() {
 		boolean[] expected = { false, true, false, true };
-		GraphCut graphcut = new GraphCut();
+		GraphCut graphcut = new GraphCut(4, 0);
 
 		graphcut.addNode(4);
 		graphcut.addUnaryTerm(0, 0, 1);
@@ -23,7 +23,7 @@ public class GraphCutTest {
 	@Test
 	public void testUnary2() {
 		boolean[] expected = { true, true, true, true };
-		GraphCut graphcut = new GraphCut();
+		GraphCut graphcut = new GraphCut(4, 0);
 
 		graphcut.addNode(4);
 		graphcut.addUnaryTerm(0, 1, 0);
@@ -38,7 +38,7 @@ public class GraphCutTest {
 	@Test
 	public void testPairwise1() {
 		boolean[] expected = { true, true, true, true };
-		GraphCut graphcut = new GraphCut();
+		GraphCut graphcut = new GraphCut(4, 4);
 
 		graphcut.addNode(4);
 		graphcut.addPairwiseTerm(0, 1, 0, 1, 1, 0);
@@ -53,7 +53,7 @@ public class GraphCutTest {
 	@Test
 	public void testPairwise2() {
 		boolean[] expected = { false, false, false, false };
-		GraphCut graphcut = new GraphCut();
+		GraphCut graphcut = new GraphCut(4, 4);
 
 		graphcut.addNode(4);
 		graphcut.addPairwiseTerm(0, 1, -1, 0, 0, 0);
@@ -68,7 +68,7 @@ public class GraphCutTest {
 	@Test
 	public void testSimple() {
 		boolean[] expected = { false, true, false, true };
-		GraphCut graphcut = new GraphCut();
+		GraphCut graphcut = new GraphCut(4, 4);
 
 		graphcut.addNode(4);
 
