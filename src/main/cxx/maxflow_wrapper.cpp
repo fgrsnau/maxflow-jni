@@ -6,7 +6,7 @@ typedef Graph<jdouble, jdouble, jdouble> GraphType;
 static GraphType* getPtr(JNIEnv *env, jobject obj)
 {
 	jclass clazz = env->GetObjectClass(obj);
-	jfieldID field = env->GetFieldID(clazz, "ptr", "L");
+	jfieldID field = env->GetFieldID(clazz, "ptr", "J");
 	jlong ptr = env->GetLongField(obj, field);
 	return reinterpret_cast<GraphType*>(ptr);
 }
