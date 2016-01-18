@@ -10,6 +10,10 @@ public class GraphCut {
 		nodeNum = 0;
 	}
 
+	public void dispose() {
+		maxflow.dispose();
+	}
+
 	public int addNode(int num) {
 		int index = maxflow.addNode(num);
 		nodeNum = index + num;

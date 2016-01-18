@@ -72,3 +72,10 @@ JNIEXPORT jint JNICALL Java_com_github_fgrsnau_maxflow_MaxFlow_whatSegment__II
 	GraphType *ptr = getPtr(env, obj);
 	return ptr->what_segment(i, static_cast<GraphType::termtype>(defaultType));
 }
+
+JNIEXPORT void JNICALL Java_com_github_fgrsnau_maxflow_MaxFlow_reset
+  (JNIEnv *env, jobject obj)
+{
+    GraphType *ptr = getPtr(env, obj);
+    ptr->reset();
+}
