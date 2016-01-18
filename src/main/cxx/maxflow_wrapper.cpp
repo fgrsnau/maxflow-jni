@@ -11,33 +11,18 @@ static GraphType* getPtr(JNIEnv *env, jobject obj)
 	return reinterpret_cast<GraphType*>(ptr);
 }
 
-/*
- * Class:     com_github_fgrsnau_maxflow_MaxFlow
- * Method:    constructor
- * Signature: (II)J
- */
 JNIEXPORT jlong JNICALL Java_com_github_fgrsnau_maxflow_MaxFlow_constructor
   (JNIEnv *, jobject, jint nodeMaxNum, jint edgeMaxNum)
 {
 	return reinterpret_cast<jlong>(new GraphType(nodeMaxNum, edgeMaxNum));
 }
 
-/*
- * Class:     com_github_fgrsnau_maxflow_MaxFlow
- * Method:    destructor
- * Signature: (J)V
- */
 JNIEXPORT void JNICALL Java_com_github_fgrsnau_maxflow_MaxFlow_destructor
   (JNIEnv *, jobject, jlong ptr)
 {
 	delete reinterpret_cast<GraphType*>(ptr);
 }
 
-/*
- * Class:     com_github_fgrsnau_maxflow_MaxFlow
- * Method:    addNode
- * Signature: ()J
- */
 JNIEXPORT jlong JNICALL Java_com_github_fgrsnau_maxflow_MaxFlow_addNode__
   (JNIEnv *env, jobject obj)
 {
@@ -46,11 +31,6 @@ JNIEXPORT jlong JNICALL Java_com_github_fgrsnau_maxflow_MaxFlow_addNode__
 	return ptr->add_node();
 }
 
-/*
- * Class:     com_github_fgrsnau_maxflow_MaxFlow
- * Method:    addNode
- * Signature: (I)I
- */
 JNIEXPORT jint JNICALL Java_com_github_fgrsnau_maxflow_MaxFlow_addNode__I
   (JNIEnv *env, jobject obj, jint num)
 {
@@ -58,11 +38,6 @@ JNIEXPORT jint JNICALL Java_com_github_fgrsnau_maxflow_MaxFlow_addNode__I
 	return ptr->add_node(num);
 }
 
-/*
- * Class:     com_github_fgrsnau_maxflow_MaxFlow
- * Method:    addEdge
- * Signature: (IIDD)V
- */
 JNIEXPORT void JNICALL Java_com_github_fgrsnau_maxflow_MaxFlow_addEdge
   (JNIEnv *env, jobject obj, jint i, jint j, jdouble cap, jdouble revCap)
 {
@@ -70,11 +45,6 @@ JNIEXPORT void JNICALL Java_com_github_fgrsnau_maxflow_MaxFlow_addEdge
 	return ptr->add_edge(i, j, cap, revCap);
 }
 
-/*
- * Class:     com_github_fgrsnau_maxflow_MaxFlow
- * Method:    addTweights
- * Signature: (IDD)V
- */
 JNIEXPORT void JNICALL Java_com_github_fgrsnau_maxflow_MaxFlow_addTweights
   (JNIEnv *env, jobject obj, jint i, jdouble capSource, jdouble capSink)
 {
@@ -82,11 +52,6 @@ JNIEXPORT void JNICALL Java_com_github_fgrsnau_maxflow_MaxFlow_addTweights
 	return ptr->add_tweights(i, capSource, capSink);
 }
 
-/*
- * Class:     com_github_fgrsnau_maxflow_MaxFlow
- * Method:    maxflow
- * Signature: ()D
- */
 JNIEXPORT jdouble JNICALL Java_com_github_fgrsnau_maxflow_MaxFlow_maxflow
   (JNIEnv *env, jobject obj)
 {
@@ -94,11 +59,6 @@ JNIEXPORT jdouble JNICALL Java_com_github_fgrsnau_maxflow_MaxFlow_maxflow
 	return ptr->maxflow();
 }
 
-/*
- * Class:     com_github_fgrsnau_maxflow_MaxFlow
- * Method:    whatSegment
- * Signature: (I)I
- */
 JNIEXPORT jint JNICALL Java_com_github_fgrsnau_maxflow_MaxFlow_whatSegment__I
   (JNIEnv *env, jobject obj, jint i)
 {
@@ -106,11 +66,6 @@ JNIEXPORT jint JNICALL Java_com_github_fgrsnau_maxflow_MaxFlow_whatSegment__I
 	return ptr->what_segment(i);
 }
 
-/*
- * Class:     com_github_fgrsnau_maxflow_MaxFlow
- * Method:    whatSegment
- * Signature: (II)I
- */
 JNIEXPORT jint JNICALL Java_com_github_fgrsnau_maxflow_MaxFlow_whatSegment__II
   (JNIEnv *env, jobject obj, jint i, jint defaultType)
 {
