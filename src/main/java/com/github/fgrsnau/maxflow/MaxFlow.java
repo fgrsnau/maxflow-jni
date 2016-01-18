@@ -3,7 +3,7 @@ package com.github.fgrsnau.maxflow;
 /**
  * @author fgrsnau
  */
-public class MaxFlow {
+public class MaxFlow implements AutoCloseable {
 
 	static {
 		NarSystem.loadLibrary();
@@ -26,7 +26,7 @@ public class MaxFlow {
 	 * native memory. If many instances are created in a tight loop the machine can easily run out of memory,
 	 * even if the garbage collector could reclaim all the wasted space.
 	 */
-	public void dispose() {
+	public void close() {
 		if (ptr != 0) {
 			destructor(ptr);
 			ptr = 0;

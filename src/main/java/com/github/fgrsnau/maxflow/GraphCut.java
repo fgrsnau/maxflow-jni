@@ -1,6 +1,6 @@
 package com.github.fgrsnau.maxflow;
 
-public class GraphCut {
+public class GraphCut implements AutoCloseable {
 
 	protected final MaxFlow maxflow;
 	protected int nodeNum;
@@ -10,8 +10,8 @@ public class GraphCut {
 		nodeNum = 0;
 	}
 
-	public void dispose() {
-		maxflow.dispose();
+	public void close() {
+		maxflow.close();
 	}
 
 	public int addNode(int num) {
@@ -66,6 +66,10 @@ public class GraphCut {
 		}
 
 		return solution;
+	}
+
+	public void reset() {
+		maxflow.reset();
 	}
 
 }
