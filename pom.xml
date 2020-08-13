@@ -20,8 +20,8 @@
 		<developer>
 			<id>sh</id>
 			<name>Stefan Haller</name>
-			<organization>TU Dresden / Computer Vision Lab</organization>
-			<organizationUrl>http://www.cvlab-dresden.de</organizationUrl>
+			<organization>Visual Learning Lab, Heidelberg University</organization>
+			<organizationUrl>https://hci.iwr.uni-heidelberg.de/vislearn/</organizationUrl>
 			<timezone>Europe/Berlin</timezone>
 		</developer>
 	</developers>
@@ -34,12 +34,12 @@
 		<dependency>
 			<groupId>org.scijava</groupId>
 			<artifactId>native-lib-loader</artifactId>
-			<version>2.1.2</version>
+			<version>2.3.4</version>
 		</dependency>
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>4.12</version>
+			<version>4.13</version>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
@@ -49,31 +49,43 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.3</version>
+				<version>3.8.1</version>
 				<configuration>
-					<source>1.7</source>
-					<target>1.7</target>
+					<source>1.8</source>
+					<target>1.8</target>
+					<compilerArgs>
+						<arg>-h</arg>
+						<arg>${project.build.directory}/nar/javah-include</arg>
+					</compilerArgs>
 				</configuration>
 			</plugin>
 			<plugin>
 				<groupId>com.github.maven-nar</groupId>
 				<artifactId>nar-maven-plugin</artifactId>
-				<version>3.2.3</version>
+				<version>3.10.1</version>
 				<extensions>true</extensions>
 				<configuration>
 					<libraries>
 						<library>
 							<type>jni</type>
 							<narSystemPackage>com.github.fgrsnau.maxflow</narSystemPackage>
-							<linkCPP>false</linkCPP>
 						</library>
 					</libraries>
+					<javah>
+						<!--
+							We do not want to run the javah goal, because javah
+							was removed in Java 10. We mirror the functionality
+							by calling the javac compiler with the -h flag
+							above.
+						-->
+						<skip>true</skip>
+					</javah>
 				</configuration>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
-				<version>2.19</version>
+				<version>2.22.2</version>
 			</plugin>
 		</plugins>
 	</build>
