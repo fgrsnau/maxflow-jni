@@ -35,10 +35,7 @@ public class MaxFlow implements AutoCloseable {
 
 	@Override
 	protected void finalize() throws Throwable {
-		if (ptr != 0) {
-			destructor(ptr);
-			ptr = 0;
-		}
+		close();
 		super.finalize();
 	}
 
